@@ -1,0 +1,3 @@
+Proof of Contribution (PoC) Blockchain
+This project implements a PoC-based blockchain that rewards nodes for their contributions to the network.
+The more a node contributes, the higher its chances of being selected to validate transactions and create new blocks.
