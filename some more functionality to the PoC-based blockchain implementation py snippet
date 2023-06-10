@@ -1,0 +1,72 @@
+To expand on the previous example, let's add some more functionality to the PoC-based blockchain implementation. 
+We'll create a simple Blockchain class that includes transaction validation, block creation, and reward distribution
+
+import hashlib
+import time
+
+class Block:
+    def __init__(self, index, previous_hash, timestamp, transactions, proof, creator_node_id):
+        self.index = index
+        self.previous_hash = previous_hash
+        self.timestamp = timestamp
+        self.transactions = transactions
+        self.proof = proof
+        self.creator_node_id = creator_node_id
+
+    def hash(self):
+        block_string = f"{self.index}{self.previous_hash}{self.timestamp}{self.transactions}{self.proof}{self.creator_node_id}"
+        return hashlib.sha256(block_string.encode('utf-8')).hexdigest()
+
+class Blockchain:
+    def __init__(self):
+        self.chain = [self.create_genesis_block()]
+        self.pending_transactions = []
+
+    def create_genesis_block(self):
+        return Block(0, "0", time.time(), [], 0, "genesis")
+
+    def add_transaction(self, transaction):
+        self.pending_transactions.append(transaction)
+
+    def create_block(self, proof, creator_node_id):
+        new_block = Block(
+            len(self.chain),
+            self.chain[-1].hash(),
+            time.time(),
+            self.pending_transactions,
+            proof,
+            creator_node_id
+        )
+        self.chain.append(new_block)
+        self.pending_transactions = []
+        return new_block
+
+# Example usage
+blockchain = Blockchain()
+
+# Add some transactions
+blockchain.add_transaction({"from": "Alice", "to": "Bob", "amount": 10})
+blockchain.add_transaction({"from": "Bob", "to": "Charlie", "amount": 5})
+
+# Select a block creator using the previous select_block_creator function
+selected_node = select_block_creator(nodes)
+
+# Create a new block with a simple proof of work (e.g., incrementing an integer)
+proof = 0
+while not blockchain.create_block(proof, selected_node.node_id).hash().startswith("0000"):
+    proof += 1
+
+print(f"New block created by node: {selected_node.node_id}")
+
+
+
+
+In this example, we define a Block class with basic properties and a hash method to calculate the block's hash. The Blockchain class includes methods for creating the genesis block, adding transactions, and creating new blocks.
+The example usage demonstrates how to create a simple blockchain, add transactions, select a block creator using the select_block_creator function, and create a new block with a simple proof of work.
+Please note that this is still a simplified example and does not cover all aspects of a PoC-based blockchain implementation.
+A complete implementation would require additional components, such as a more sophisticated proof of work or proof of stake mechanism, a peer-to-peer network for communication between nodes, and a more robust reward distribution system.
+
+
+
+
+
