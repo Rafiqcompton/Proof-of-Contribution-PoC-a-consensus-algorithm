@@ -1,0 +1,4 @@
+Clone the repository.
+Install the required Python libraries.
+Run the node software on each participating machine.
+Configure the nodes to connect to each other and share resources.
