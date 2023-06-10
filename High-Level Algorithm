@@ -1,0 +1,6 @@
+Each node in the network measures and reports its contributions (e.g., storage, bandwidth, or computational resources) to a central registry or through a decentralized mechanism.
+The network calculates a contribution score for each node based on the reported contributions and other factors, such as uptime and historical performance.
+When a new block needs to be created, the network selects a node to be the block creator based on its contribution score. Nodes with higher scores have a higher probability of being chosen.
+The selected node validates the transactions, creates the new block, and broadcasts it to the network.
+Other nodes verify the new block and update their local copies of the blockchain.
+The block creator receives a reward proportional to its contribution score, incentivizing further participation and resource sharing.
