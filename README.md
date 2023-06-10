@@ -1,2 +1,3 @@
 # Proof-of-Contribution-PoC-a-consensus-algorithm
  In this algorithm, nodes would be rewarded for their contributions to the network, such as providing storage, bandwidth, or computational resources.
+Proof of Contribution (PoC) is a consensus algorithm that rewards nodes for their contributions to the network, such as providing storage, bandwidth, or computational resources. The more a node contributes, the higher its chances of being selected to validate transactions and create new blocks. This approach incentivizes nodes to actively participate in the network and share resources, fostering a more decentralized and resilient system.
