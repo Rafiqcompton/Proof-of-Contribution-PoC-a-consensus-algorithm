@@ -1,0 +1,37 @@
+
+Here's a Python code snippet that demonstrates a simple implementation of the Proof of Contribution (PoC) algorithm. 
+This example assumes that nodes have already reported their contributions, and the contribution scores have been calculated
+
+
+
+
+
+
+
+import random
+
+class Node:
+    def __init__(self, node_id, contribution_score):
+        self.node_id = node_id
+        self.contribution_score = contribution_score
+
+def select_block_creator(nodes):
+    total_score = sum(node.contribution_score for node in nodes)
+    random_point = random.uniform(0, total_score)
+    current_sum = 0
+
+    for node in nodes:
+        current_sum += node.contribution_score
+        if current_sum >= random_point:
+            return node
+
+# Example usage
+nodes = [
+    Node("node1", 100),
+    Node("node2", 200),
+    Node("node3", 300),
+    Node("node4", 400)
+]
+
+selected_node = select_block_creator(nodes)
+print(f"Selected node: {selected_node.node_id}")
